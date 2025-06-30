@@ -108,7 +108,11 @@ public class GraphDemoFrame extends JFrame {
         });
         buttonCreateGraph.addActionListener(e -> {
             try {
-                graph = GraphUtils.fromStr(textAreaGraphFile.getText());
+                String selectedGraph = (String) comboBoxGraphType.getSelectedItem();
+                Class clz = "Н-граф (AdjMatrixGraph)".equals(selectedGraph)
+                        ? AdjMatrixGraph.class
+                        : AdjMatrixGraph.class; // AdjListsGraph.class
+                graph = GraphUtils.fromStr(textAreaGraphFile.getText(), clz);
                 showSystemOut("Граф построен. Вершин: " + graph.vertexCount() + ", рёбер: " + graph.edgeCount());
                 panelGraphPainterContainer.repaint();
             } catch (Exception ex) {

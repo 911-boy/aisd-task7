@@ -37,7 +37,7 @@ public class GraphFrame extends JFrame {
                 String input = inputArea.getText();
                 try {
                     // 1 преобразуем текст в граф
-                    Graph graph = GraphUtils.fromStr(input);
+                    Graph graph = GraphUtils.fromStr(input, AdjMatrixGraph.class);
                     // 2запускаем поиск кратчайшего цикла
                     int cycleLen = GraphAlgorithms.shortestCycleLength(graph);
                     // 3 ыыводим результат
